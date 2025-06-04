@@ -22,6 +22,23 @@ def solve():
         sij_array = np.array(Sij)
         doubled_sij = (sij_array * 2).tolist()
 
+
+        # QUBO行列の設定
+        Sij = np.array(Sij)
+        Diip = np.array(Diip)
+        Kj = np.array(Kj)
+        lam1 = 10
+        lam2 = 10
+        N, M = Sij.shape
+        
+        qubo = np.zeros((N*M)**2)
+
+        sampler = SASampler()
+
+        
+
+        # アニーリング
+
         # 結果を返す
         return jsonify({
             "message": "Qij successfully processed",
