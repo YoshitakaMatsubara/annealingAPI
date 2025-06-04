@@ -36,6 +36,14 @@ def solve():
                 
         # Diipの項
 
+        for i1 in range(N):
+            for i2 in range(N):
+                for j in range(M):
+                    if (i1*M+j, i2*M+j) not in qubo.keys():
+                        qubo[(i1*M+j, i2*M+j)] = Diip[i1][i2]
+                    else:
+                        qubo[(i1*M+j, i2*M+j)] += Diip[i1][i2]
+
         # 制約項
 
         sampler = SASampler()
