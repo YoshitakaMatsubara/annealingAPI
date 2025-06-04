@@ -45,6 +45,21 @@ def solve():
                         qubo[(i1*M+j, i2*M+j)] += Diip[i1][i2]
 
         # 制約項
+        for i in range(N):
+            for j1 in range(M):
+                for j2 in range(M):
+                    if (i+M+j1, i*M+j2) not in qubo.keys():
+                        qubo[(i*M+j1, i*M+j2)] = lam1
+                        
+                    else:
+                        qubo[(i*M+j1, i*M+j2)] += lam1
+                    if j1 == j2:
+                        qubo[(i*M+j1, i*M+j2)] -= 2 * lam1
+
+
+
+
+        
 
         sampler = SASampler()
         sampleset = sampler.sample_qubo(qubo, num_reads=10)
