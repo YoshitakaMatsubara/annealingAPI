@@ -48,19 +48,24 @@ def solve():
         for i in range(N):
             for j1 in range(M):
                 for j2 in range(M):
-                    if (i+M+j1, i*M+j2) not in qubo.keys():
+                    if (i*M+j1, i*M+j2) not in qubo.keys():
                         qubo[(i*M+j1, i*M+j2)] = lam1
-                        
                     else:
                         qubo[(i*M+j1, i*M+j2)] += lam1
                     if j1 == j2:
                         qubo[(i*M+j1, i*M+j2)] -= 2 * lam1
 
-
-
-
-        
-
+        for i1 in range(N):
+            for i2 in range(N):
+                for j in range(M):
+                    if (i1*M+j, i2*M+j) not in qubo.keys():
+                        qubo[(i1*M+j, i2*M+j)] = lam2
+                    else:
+                        qubo[(i1*M+j, i2*M+j)] += lam2
+                    if i1 == i2:
+                        qubo[(i1*M+j, i2*M+j)] -= 2 * lam2 * Kj[j]
+                        
+        # 最適化計算               
         sampler = SASampler()
         sampleset = sampler.sample_qubo(qubo, num_reads=10)
 
