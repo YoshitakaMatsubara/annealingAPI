@@ -18,11 +18,6 @@ def solve():
         if Sij is None or Diip is None or Kj is None:
             return jsonify({"error": "Missing one or more required keys: Sij, Diip, Kj"}), 400
 
-        # Sij に2を掛ける
-        sij_array = np.array(Sij)
-        doubled_sij = (sij_array * 2).tolist()
-
-
         # QUBO行列の設定
         Sij = np.array(Sij)
         Diip = np.array(Diip)
@@ -31,13 +26,13 @@ def solve():
         lam2 = 10
         N, M = Sij.shape
         
-        qubo = np.zeros(N*M, N*M)
+        qubo = {}
 
         # Sijの項
 
         for i in range(N):
             for j in range(M):
-                qubo[i*M+j, i*M+j] = Sij[i, j]
+                qubo[(i*M+j, i*M+j)] = Sij[i][j]
                 
         # Diipの項
 
