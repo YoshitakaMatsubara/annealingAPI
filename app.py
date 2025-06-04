@@ -36,7 +36,7 @@ def solve():
         sampler = SASampler()
         sampleset = sampler.sample_qubo(qubo, num_reads=10)
 
-        ans = sampleset.lowest().record["sample"].reshape(N, M)
+        ans = sampleset.first.record["sample"].reshape(N, M)
 
         
 
