@@ -24,8 +24,8 @@ def solve():
 
         # 結果を返す
         return jsonify({
-            "message": "Sij successfully processed",
-            "Sij_doubled": doubled_sij
+            "message": "Qij successfully processed",
+            "Qij": doubled_sij
         })
 
     except Exception as e:
