@@ -36,12 +36,10 @@ def solve():
         sampler = SASampler()
         sampleset = sampler.sample_qubo(qubo, num_reads=10)
 
-        ans = sampleset.first.record["sample"].reshape(N, M)
-
+        sample_dict = sampleset.first.sample
+        sample_array = np.array([sample_dict[i] for i in range(N*M)])
+        ans = sample_array.reshape(N, M)
         
-
-        # アニーリング
-
         # 結果を返す
         return jsonify({
             "message": "Qij successfully processed",
