@@ -31,7 +31,17 @@ def solve():
         lam2 = 10
         N, M = Sij.shape
         
-        qubo = np.random.randn(N*M, N*M)
+        qubo = np.zeros(N*M, N*M)
+
+        # Sijの項
+
+        for i in range(N):
+            for j in range(M):
+                qubo[i*M+j, i*M+j] = Sij[i, j]
+                
+        # Diipの項
+
+        # 制約項
 
         sampler = SASampler()
         sampleset = sampler.sample_qubo(qubo, num_reads=10)
