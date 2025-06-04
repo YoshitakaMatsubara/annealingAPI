@@ -43,7 +43,7 @@ def solve():
         # 結果を返す
         return jsonify({
             "message": "Qij successfully processed",
-            "Qij": ans
+            "Qij": ans.tolist()
         })
 
     except Exception as e:
