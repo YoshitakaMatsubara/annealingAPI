@@ -31,9 +31,12 @@ def solve():
         lam2 = 10
         N, M = Sij.shape
         
-        qubo = np.zeros((N*M)**2)
+        qubo = np.random.randn((N*M)**2)
 
         sampler = SASampler()
+        sampleset = sampler.sample_qubo(qubo, num_reads=10)
+
+        ans = sampleset.lowest().record["sample"].reshape(N, M)
 
         
 
@@ -42,7 +45,7 @@ def solve():
         # 結果を返す
         return jsonify({
             "message": "Qij successfully processed",
-            "Qij": doubled_sij
+            "Qij": ans
         })
 
     except Exception as e:
