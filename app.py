@@ -31,7 +31,7 @@ def solve():
         lam2 = 10
         N, M = Sij.shape
         
-        qubo = np.random.randn((N*M, N*M))
+        qubo = np.random.randn(N*M, N*M)
 
         sampler = SASampler()
         sampleset = sampler.sample_qubo(qubo, num_reads=10)
