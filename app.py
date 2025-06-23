@@ -66,7 +66,7 @@ def solve():
                         qubo[(i1*M+j, i2*M+j)] -= 2 * lam2 * Kj[j]
                         
         # 最適化計算               
-        sampler = SQASampler()
+        sampler = SASampler()
         sampleset = sampler.sample_qubo(qubo, num_reads=10)
 
         sample_dict = sampleset.first.sample
