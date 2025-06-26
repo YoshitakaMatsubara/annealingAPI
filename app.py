@@ -22,8 +22,8 @@ def solve():
         Sij = np.array(Sij)
         Diip = np.array(Diip)
         Kj = np.array(Kj)
-        lam1 = 500
-        lam2 = 500
+        lam1 = 50
+        lam2 = 50
         N, M = Sij.shape
         
         qubo = {}
